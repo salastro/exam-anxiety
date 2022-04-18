@@ -1,5 +1,6 @@
 % xelatex
 % vim:set et sw=4 ts=4 tw=80:
+% \documentclass[12pt]{apa7}
 \documentclass[12pt]{report}
 
 \usepackage{setspace}
@@ -36,6 +37,9 @@ Pressure on Exam Anxiety}
     and
     Qena STEM School
     \includegraphics[height=.85em]{images/qena.png}
+    \\
+    under the Egyptian Ministry of Education
+    \includegraphics[height=.85em]{images/ministry.png}
     \\\\
     English Class Grade 12
     \\\\
@@ -44,13 +48,21 @@ Pressure on Exam Anxiety}
 }
 \date{\today}
 
+\pagenumbering{roman}
+
 \begin{document}
 \maketitle
 \tableofcontents
+\listoffigures
+\listoftables
 
 \abstract{
     some abstract, hehe
 }
+\thispagestyle{plain}
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
 \chapter{Problem}
 \section{Introduction}
@@ -146,7 +158,15 @@ it.
 
 \chapter{Hypothesis}
 
-\lipsum
+As mentioned in the previous chapter, the main focus of the study is the effect
+of procrastination and family on exam anxiety. Accordingly, the proposed
+hypothesis is that procrastination does have a significantly higher effect than
+that of family pressure. The importance of such hypothesis may not seem clear at
+first and might even rise more issues; however, the result will determine which
+should be the concern of a family dealing with their childern. \textit{``Should
+I change the way I am supporiting my kid or force him to study and avoid
+procrastination?"} is the kind of questions that this study try to answer
+effectively.
 
 \chapter{Methodology}
 
@@ -166,7 +186,7 @@ it.
 
 \section{Questionnaire}
 \lipsum
-\section{Previous Corrected Versions}
+\section{Previous Versions}
 \lipsum
 
 \end{document}
