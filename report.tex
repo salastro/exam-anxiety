@@ -17,6 +17,7 @@
 \usepackage{hyperref}
 \usepackage{lipsum}
 \usepackage{graphicx}
+\usepackage{hologo}
 
 \setstretch{1.15}
 % \setmainfont{Doulos SIL}[
@@ -27,6 +28,7 @@
 % \setmainfont{PT Serif}
 % \setmainfont{Charis SIL}
 \setmainfont{Times New Roman}
+\pagenumbering{roman}
 \title{Comparing the Qualitative Effects Between Procrastination and Family
 Pressure on Exam Anxiety}
 \author{
@@ -55,7 +57,7 @@ Pressure on Exam Anxiety}
 }
 \date{\today}
 
-\pagenumbering{roman}
+\renewcommand{\abstractname}{Executive Summary}
 
 \begin{document}
 \maketitle
@@ -64,15 +66,26 @@ Pressure on Exam Anxiety}
 \listoftables
 
 \abstract{
-    some abstract, hehe
+    Exam anxiety is a huge factor in the daily life of students. It may
+    affect their possible performance in exams resulting in an undesirable future.
+    The most common causes of exam anxiety are the lack of preparation and family
+    pressure. This report presents the qualitative effects of two in order to form
+    more sophisticated plans for dealing with possible educational issues. The
+    method by which these factors are compared is based on a 5-dimensional 100-point
+    scale whose main input is a questionnaire done by a sample of 48 students. The
+    model concluded that the procrastination has more effect than family pressure on
+    exam anxiety by 43\% with a 0.048 p-value. This model, however, does not
+    consider the performance of the students as an important factor hence the need
+    of more development for its structure.
 }
 \thispagestyle{plain}
 
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\chapter{Problem}
-\section{Introduction}
+\chapter{Introduction}
+\section{Problem}
+\subsection{Literature}
 
 It is a notable phenomenon that individuals do experience some kind of anxiety
 throughout their life — especially their academic one — increasing the
@@ -113,7 +126,7 @@ piece of work; accordingly, the most concerning of factors shall be analysed. It
 was decided that exams, and hence exams anxiety, are the most serious due to the
 both their effect on one's mental state and possible future.
 
-\section{Impact}
+\subsection{Impact}
 
 To assess the true value of the proposed problem the quantitative impact should
 be investigated to avoid wasting resources on an unnecessary matter. The main
@@ -134,66 +147,94 @@ illustrates the students' opinions on the topic: students who were more anxious
 had more radical opinions concerning the subject compared to their less anxious
 peers.
 
-\section{Possible Factors}
+\subsection{Possible Factors}
 
 There is, clearly, a number of measurable factors that results in exam anxiety.
 An incomprehensive list of them include: load of courses, duration of exams,
 expectations of exams, control over exams, procrastination, physical exercise,
 quality of rests, confidence, nutritions, and time management Some will be
 discussed here in order to form a coherent image for the current state of this
-problem. Despite that, the goal of this section is to decide the factors that
+problem. Despite that, the goal of this subsection is to decide the factors that
 should be discussed in order to reach a clear conclusion for this study.
 
 Even though course load was conducted to be the most important factor, it is the
 only exam-related affective factor \parencite{hashmat2008factors}. All the other
-sufficiently significant factors are directly related to the psychological state
-of the student (e.g. self-confidence, expectations, etc), ergo the focus on
-psychological health aspects. However, an aspect that is greatly is usually
-overlooked is pressure caused by whom around the individual (e.g. family
-pressure, peer pressure, etc). It can affect a key factor, self-esteem
-\parencite{whitbeck1991family}.
+sufficiently significant\footnote{In statistical hypothesis testing, a result
+has statistical significance when it is very unlikely to have occurred.} factors
+are directly related to the psychological state of the student (e.g.
+self-confidence, expectations, etc), ergo the focus on psychological health
+aspects. However, an aspect that is greatly is usually overlooked is pressure
+caused by whom around the individual (e.g. family pressure, peer pressure, etc).
+It can affect a key factor, self-esteem \parencite{whitbeck1991family}.
 
-While procrastination\footnote{also referred to as preparation in some studies}
-is a known yet not-well studied factor, pressure is not considered in most
-studies as a factor of any significance. Because of that the focus will be to
-compare a known and less known factors in order to result in a more
-comprehensive view of the issue in hand. However, the subject of pressure is an
-unmanageably broad concept that needs to be reduced into a feasible subcategory.
-\cite{whitbeck1991family} considers family pressure by far the most significant
-emotional factor affecting self-esteem and confidence hence the focus will be on
-it.
+While procrastination\footnote{Procrastination is also referred to as
+preparation in some studies.} is a known yet not-well studied factor, pressure
+is not considered in most studies as a factor of any significance. Because of
+that the focus will be to compare a known and less known factors in order to
+result in a more comprehensive view of the issue in hand. However, the subject
+of pressure is an unmanageably broad concept that needs to be reduced into a
+feasible subcategory. \cite{whitbeck1991family} considers family pressure by far
+the most significant emotional factor affecting self-esteem and confidence hence
+the focus will be on it.
 
-\chapter{Hypothesis}
+\section{Hypothesis}
 
-As mentioned in the previous chapter, the main focus of the study is the effects
-of procrastination and family on exam anxiety. Accordingly, the proposed
-hypothesis is that procrastination does have a significantly higher effect than
-that of family pressure. The importance of such hypothesis may not seem clear at
-first and might even rise more issues; however, the result will determine which
-should be the concern of a family dealing with their childern. \textit{``Should
-I change the way I am supporiting my kid or force him to study more and avoid
-procrastination?"} is the kind of questions that this research try to answer
-effectively.
+\subsection{Defining}
 
-\chapter{Methodology}
+As mentioned in the previous section, the main focus of the study is the effects
+of procrastination and family pressure on exam anxiety. Accordingly, the
+proposed hypothesis is that procrastination does have a significantly higher
+effect than that of family pressure. The importance of such hypothesis may not
+seem clear at first and might even rise more issues; however, the result will
+determine which should be the concern of a family dealing with their children.
+\textit{``Should I change the way I am supporting my kid or force him to study
+more and avoid procrastination?"} is the kind of questions that this research
+try to answer effectively.
+
+It is important to note that the hypothesis is not a direct comparison between
+the two points of failure i.e. self and family, but rather a concise overview on
+the metrics that are being investigated. Furthermore, the result of the study is
+a subset of the problem. The main benefit will be the possible plans that could
+be derived. Thus, the formal statement that of the null hypothesis\footnote{In
+inferential statistics, the null hypothesis is that two possibilities are the
+same.} is that there is no statistically significant difference between the
+negative effects of procrastination and family pressure on exam anxiety, while
+the alternative hypothesis\footnote{In statistical hypothesis testing, the
+alternative hypothesis is one of the proposed propositions.} is that there is a
+statistically significant difference between the negative effects of
+procrastination.
+
+\subsection{Testing}
+
+\chapter{Body}
+\section{Methodology}
 
 \lipsum
 
-\chapter{Findings}
+\section{Findings}
 
 \lipsum
 
 \chapter{Conclusion}
+\section{Summary of Findings}
+\section{Recommendations}
 
 \lipsum
 
 \printbibliography[heading=bibnumbered]
 
-\chapter{Appendix}
 
-\section{Questionnaire}
+% \chapter{Appendix}
+% \section{Questionnaire}
+\appendix
+\chapter{Questionnaire}
 \lipsum
-\section{Previous Versions}
+\chapter{Previous Corrected Versions}
 \lipsum
+\chapter{Technical Notes}
+
+This document was completely made within {\LaTeX} markup language for the main
+typesetting with \hologo{BibTeX} for bibliography/references using an external
+text editor i.e. NeoVim while managing version revisions with Git.
 
 \end{document}
