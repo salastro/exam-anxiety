@@ -15,15 +15,21 @@
 ]{biblatex}
 \addbibresource{report.bib}
 \usepackage{hyperref}
-\usepackage{lipsum}
+\usepackage{kantlipsum}
 \usepackage{graphicx}
 % \usepackage{hologo}
-% \usepackage{pgfplots}
+\usepackage{pgfplots}
+\usepackage{tikz,tikz-3dplot}
+\usepackage{float}
 \usepackage{multicol}
+\usepackage{enumitem}
+% \usepackage{datatool}
+% \DTLloaddb{data}{data/data-nums.csv}
 
-% \pgfplotsset{compat=1.17}
+\pgfplotsset{compat=newest}
 % \usepgfplotslibrary{external}
 % \tikzexternalize
+
 
 \setstretch{1.15}
 % \setmainfont{Doulos SIL}[
@@ -75,14 +81,14 @@ Pressure on Exam Anxiety}
     The most common causes of exam anxiety are the lack of preparation and family
     pressure. This report presents the qualitative effects of two in order to form
     more sophisticated plans for dealing with possible educational issues. The
-    method by which these factors are compared is based on a 5-dimensional 100-point
+    method by which these factors are compared is based on a 3-dimensional 10-point
     scale whose main input is a questionnaire done by a sample of 43 students. The
     model concluded that the procrastination has more effect than family pressure on
     exam anxiety by 43\% with a 0.048 p-value. This model, however, does not
     consider the performance of the students as an important factor hence the need
     of more development for its structure.
+    \addcontentsline{toc}{chapter}{Executive Summary}
 }
-\addcontentsline{toc}{chapter}{Executive Summary}
 \thispagestyle{plain}
 
 \setcounter{page}{1}
@@ -153,21 +159,200 @@ its overall insignificant affect on the results \parencite{hashmat2008factors}.
 
 \subsection{Questions}
 
+\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+
+    \item \textit{How much did procrastination affect your academic performance?}
+\textbf{(10-point scale)}
+
+This question measures the affect of procrastination on performance from the
+student's perspective essentially measuring the amount of procrastination
+while avoiding the feel of guilt this question usually results.
+
+\item \textit{How harsh did your family go on you to study last year?}
+\textbf{(10-point scale)}
+
+This question measures the amount of family pressure a student has endured without
+implicitly mentioning family pressure to avoid bias caused by family relations
+with mentioning it more as a beneficial parental act.
+
+\item \textit{How satisfied were you with your last year's academic
+performance?}
+\textbf{(10-point scale)}
+
+This question measures the student's satisfaction with their academic
+performance in order to correlate it with procrastination and family pressure.
+
+\item \textit{How stressful did you feel about last year's exams?}
+\textbf{(10-point scale)}
+
+This question measures the student's stress factor, which affects exam anxiety
+the most, in order to correlate it with procrastination and family pressure.
+
+\item \textit{How hard it takes you to recover after bad grades?}
+\textbf{(open-ended)}
+
+This question tries to find the relation between the amount of exam anxiety
+and the recovering factor.
+
+\item \textit{What are the factors that lead to exam anxiety from your
+perspective?}
+\textbf{(open-ended)}
+
+This questions collects other factors that may affect or be affected by family
+pressure, procrastination, or both. This may even help in drawing conclusions
+beyond the scope of this study.
+
+\item \textit{How do you get ready mentally for your exams?}
+\textbf{(open-ended)}
+
+This question tries to find solutions provided by students and correlated them
+with the amount of exam anxiety in order to measure their effectiveness.
+
+\item \textit{Which affected your performance the most?}
+\textbf{(multiple choices)}
+
+This question tests student's perspective of their situation to enable comparing
+what students think with the calculated results of other questions.
+
+\end{enumerate}
+
 \section{Findings}
 
-\lipsum
+There is a notable correlation between both family pressure and procrastination
+seen in Figure~\ref{fig:procrastination-stress} and
+Figure~\ref{fig:family-stress}. Despite that, there is a weak correlation in
+Figure~\ref{fig:procrastination-family} that may hint to problems within this
+model. Thus, a more sophisticated tool should be formulated; accordingly, the
+exam anxiety factor ($EAF$) is defined in Equation~\ref{eq:exam-anxiety}.
+
+\begin{equation}
+    EAF = \textnormal{stress} -
+    \frac{\textnormal{satisfaction}}{\textnormal{recovery}}
+    \label{eq:exam-anxiety}
+\end{equation}
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \begin{axis}[
+            width = \linewidth,
+            only marks,
+            mark size=3pt,
+            scatter,
+            xlabel = procrastination,
+            ylabel = stress,
+            legend style={
+                at={(0.44,-0.2)},
+                anchor=north,legend columns=-1
+            },
+            grid style=dashed,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            ]
+                \addplot[] table [
+                    x=procrastination,
+                    y=stress,
+                    col sep=comma
+                    ]{data/data-nums.csv};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Procrastination versus stress plot}
+            \label{fig:procrastination-stress}
+        \end{figure}
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \begin{axis}[
+            width = \linewidth,
+            only marks,
+            mark size=3pt,
+            scatter,
+            xlabel = family pressure,
+            ylabel = stress,
+            legend style={
+                at={(0.44,-0.2)},
+                anchor=north,legend columns=-1
+            },
+            grid style=dashed,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            ]
+            \addplot[] table [
+                x=family,
+                y=stress,
+                col sep=comma
+                ]{data/data-nums.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Family pressure versus stress plot}
+    \label{fig:family-stress}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \begin{axis}[
+            width = \linewidth,
+            only marks,
+            mark size=3pt,
+            scatter,
+            xlabel = procrastination,
+            ylabel = family pressure,
+            legend style={
+                at={(0.44,-0.2)},
+                anchor=north,legend columns=-1
+            },
+            grid style=dashed,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            ]
+            \addplot[] table [
+                x=procrastination,
+                y=family,
+                col sep=comma
+                ]{data/data-nums.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Procrastination versus family pressure plot}
+    \label{fig:procrastination-family}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{tikzpicture}
+        \begin{axis}[
+            width = \linewidth,
+            only marks,
+            mark size=3pt,
+            scatter,
+            zlabel = exam anxiety factor,
+            grid style=dashed,
+            ymajorgrids=true,
+            xmajorgrids=true,
+            zmajorgrids=true,
+            zlabel style={sloped},
+            clip=false,
+            ]
+            \addplot3[scatter, only marks] table [
+                x=procrastination,
+                y=family,
+                z=EAF,
+                col sep=comma,
+                ]{data/data-nums.csv};
+            \node at (rel axis cs:0,0.4,1.1) [above,sloped like y axis] {family
+                pressure};
+            \node at (rel axis cs:1,0,1.7) [above,sloped like x axis]
+                {procrastination};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Exam anxiety factor plot}
+    \label{fig:3d}
+\end{figure}
 
 \end{multicols}
-
 
 \chapter{Conclusion}
 \begin{multicols}{2}
 
 \section{Summary of Findings}
-\lipsum
 \section{Recommendations}
-
-\lipsum
 
 \end{multicols}
 
@@ -175,7 +360,6 @@ its overall insignificant affect on the results \parencite{hashmat2008factors}.
 
 \chapter{Appendix}
 \section{Questionnaire}
-\lipsum
 % \appendix
 % \chapter{Questionnaire}
 % \lipsum
