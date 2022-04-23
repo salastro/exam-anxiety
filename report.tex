@@ -16,6 +16,7 @@
 \addbibresource{report.bib}
 \usepackage{hyperref}
 \usepackage{kantlipsum}
+\usepackage{lipsum}
 \usepackage{graphicx}
 % \usepackage{hologo}
 \usepackage{pgfplots}
@@ -23,6 +24,7 @@
 \usepackage{float}
 \usepackage{multicol}
 \usepackage{enumitem}
+\usepackage{amsmath}
 % \usepackage{datatool}
 % \DTLloaddb{data}{data/data-nums.csv}
 
@@ -223,7 +225,17 @@ seen in Figure~\ref{fig:procrastination-stress} and
 Figure~\ref{fig:family-stress}. Despite that, there is a weak correlation in
 Figure~\ref{fig:procrastination-family} that may hint to problems within this
 model. Thus, a more sophisticated tool should be formulated; accordingly, the
-exam anxiety factor ($EAF$) is defined in Equation~\ref{eq:exam-anxiety}.
+exam anxiety factor ($EA$) is defined in Equation~\ref{eq:exam-anxiety}.
+
+A 3-dimensional plot of the exam anxiety could be helpful in demonstrating
+the relation between procrastination and family pressure. Figure~\ref{fig:3d}
+shows a greater correlation between the two factors and exam anxiety, but family
+pressure is clearly more dominant. The increase of both factors results in a
+noticeable increase in exam anxiety.
+
+The best fit curve for family pressure ($F$) and procrastination ($P$) are
+Equation~\ref{eq:eaf-f} and Equation~\ref{eq:eaf-p} respectively, and the
+determination coefficients are $R^2 = 0.04$ and $R^2 = 0.06$ respectively.
 
 \begin{equation}
     EAF = \textnormal{stress} -
@@ -315,14 +327,30 @@ exam anxiety factor ($EAF$) is defined in Equation~\ref{eq:exam-anxiety}.
     \label{fig:procrastination-family}
 \end{figure}
 
+\begin{align}
+    \label{eq:eaf-f}
+    EA &= 0.027 F^3 - 0.4 F^2 + 1.6 F + 3\\
+    \label{eq:eaf-p}
+        &= -0.20 P^2 + 2.7 P - 2.7\\
+    \label{eq:eaf-fp}
+        &= 0.18 F - 0.20 P + 5.6
+\end{align}
+
+Despite that, the unmatching Equation~\ref{eq:eaf-fp} has a determination
+coefficient $R^2 = 0.024$, which may indicate that the two factors have a strong
+mutual impact on exam anxiety. Additionally, these equations indicate that, while
+procrastination has a larger affect, it does not stay as long as family
+pressure, and after a specific critical point ($P=7$) its effect starts
+declining.
+
+
+
 \begin{figure}[H]
     \begin{tikzpicture}
         \begin{axis}[
             width = \linewidth,
-            only marks,
-            mark size=3pt,
-            scatter,
-            zlabel = exam anxiety factor,
+            mark size=2.7pt,
+            zlabel = exam anxiety,
             grid style=dashed,
             ymajorgrids=true,
             xmajorgrids=true,
@@ -330,7 +358,10 @@ exam anxiety factor ($EAF$) is defined in Equation~\ref{eq:exam-anxiety}.
             zlabel style={sloped},
             clip=false,
             ]
-            \addplot3[scatter, only marks] table [
+            \addplot3[
+                scatter,
+                only marks,
+                ] table [
                 x=procrastination,
                 y=family,
                 z=EAF,
@@ -340,9 +371,14 @@ exam anxiety factor ($EAF$) is defined in Equation~\ref{eq:exam-anxiety}.
                 pressure};
             \node at (rel axis cs:1,0,1.7) [above,sloped like x axis]
                 {procrastination};
+            % \addplot3 [
+            %     mesh,
+            %     samples=4,
+            %     domain=0:10,
+            %     ]{0.178141*y-0.208792*x+5.63211};
         \end{axis}
     \end{tikzpicture}
-    \caption{Exam anxiety factor plot}
+    \caption{Exam anxiety plot}
     \label{fig:3d}
 \end{figure}
 
