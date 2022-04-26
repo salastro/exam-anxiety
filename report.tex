@@ -27,6 +27,7 @@
 \usepackage{amsmath}
 % \usepackage{datatool}
 % \DTLloaddb{data}{data/data-nums.csv}
+\usepackage{pgf-pie}  
 
 \pgfplotsset{compat=newest}
 % \usepgfplotslibrary{external}
@@ -75,20 +76,20 @@ Pressure on Exam Anxiety}
 \maketitle
 \tableofcontents
 \listoffigures
-\listoftables
+% \listoftables
 
 \abstract{
-    Exam anxiety is a huge factor in the daily life of students. It may
-    affect their possible performance in exams resulting in an undesirable future.
-    The most common causes of exam anxiety are the lack of preparation and family
-    pressure. This report presents the qualitative effects of two in order to form
-    more sophisticated plans for dealing with possible educational issues. The
-    method by which these factors are compared is based on a 3-dimensional 10-point
-    scale whose main input is a questionnaire done by a sample of 43 students. The
-    model concluded that the procrastination has more effect than family pressure on
-    exam anxiety by 43\% with a 0.048 p-value. This model, however, does not
-    consider the performance of the students as an important factor hence the need
-    of more development for its structure.
+    Exam anxiety is a huge factor in the daily life of students. It may affect
+    their possible performance in exams resulting in an undesirable future. The
+    most common causes of exam anxiety are the lack of preparation and family
+    pressure. This report presents the qualitative effects of two in order to
+    form more sophisticated plans for dealing with possible educational issues.
+    The method by which these factors are compared is based on a 3-dimensional
+    10-point scale whose main input is a questionnaire done by a sample of 43
+    students. The model concluded that the procrastination has more effect than
+    family pressure on exam anxiety by 43\% with a 0.048 p-value. This model,
+    however, does not consider the performance of the students as an important
+    factor hence the need of more development for its structure.
     \addcontentsline{toc}{chapter}{Executive Summary}
 }
 \thispagestyle{plain}
@@ -234,8 +235,8 @@ pressure is clearly more dominant. The increase of both factors results in a
 noticeable increase in exam anxiety.
 
 The best fit curve for family pressure ($F$) and procrastination ($P$) are
-Equation~\ref{eq:eaf-f} and Equation~\ref{eq:eaf-p} respectively, and the
-determination coefficients are $R^2 = 0.04$ and $R^2 = 0.06$ respectively.
+Equation~\ref{eq:eaf-f} and Equation~\ref{eq:eaf-p} respectively with
+determination coefficients of $R^2 = 0.04$ and $R^2 = 0.06$.
 
 \begin{equation}
     EAF = \textnormal{stress} -
@@ -260,16 +261,16 @@ determination coefficients are $R^2 = 0.04$ and $R^2 = 0.06$ respectively.
             ymajorgrids=true,
             xmajorgrids=true,
             ]
-                \addplot[] table [
-                    x=procrastination,
-                    y=stress,
-                    col sep=comma
-                    ]{data/data-nums.csv};
-                \end{axis}
-            \end{tikzpicture}
-            \caption{Procrastination versus stress plot}
-            \label{fig:procrastination-stress}
-        \end{figure}
+            \addplot[] table [
+                x=procrastination,
+                y=stress,
+                col sep=comma
+                ]{data/data-nums.csv};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Procrastination versus stress plot}
+    \label{fig:procrastination-stress}
+\end{figure}
 
 \begin{figure}[H]
     \begin{tikzpicture}
@@ -330,20 +331,27 @@ determination coefficients are $R^2 = 0.04$ and $R^2 = 0.06$ respectively.
 \begin{align}
     \label{eq:eaf-f}
     EA &= 0.027 F^3 - 0.4 F^2 + 1.6 F + 3\\
-    \label{eq:eaf-p}
-        &= -0.20 P^2 + 2.7 P - 2.7\\
-    \label{eq:eaf-fp}
-        &= 0.18 F - 0.20 P + 5.6
+       \label{eq:eaf-p}
+       &= -0.20 P^2 + 2.7 P - 2.7\\
+       \label{eq:eaf-fp}
+       &= 0.18 F - 0.20 P + 5.6
 \end{align}
 
 Despite that, the unmatching Equation~\ref{eq:eaf-fp} has a determination
 coefficient $R^2 = 0.024$, which may indicate that the two factors have a strong
-mutual impact on exam anxiety. Additionally, these equations indicate that, while
-procrastination has a larger affect, it does not stay as long as family
+mutual impact on exam anxiety. Additionally, these equations indicate that,
+while procrastination has a larger affect, it does not stay as long as family
 pressure, and after a specific critical point ($P=7$) its effect starts
 declining.
 
-
+On the other hand, Figure~\ref{fig:bar} shows the total of exam anxiety across
+age groups. The bar chart shows a clear increase around the age of 17, which is
+the average age for high school seniors. This reflects the large importance that
+the Egyptian society puts on this year resulting in an in increase in exam
+anxiety. At the age of 20 students tend to be more anxious than at the age of
+15, although there is less pressure on their academic life as they are in
+college. This may indicate that other factors take affect on exam anxiety later
+on in life.
 
 \begin{figure}[H]
     \begin{tikzpicture}
@@ -382,12 +390,33 @@ declining.
     \label{fig:3d}
 \end{figure}
 
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}[]
+            \begin{axis}[
+                ybar stacked,
+                ]
+                \addplot+[
+                    ybar,
+                    ] table[
+                    x=age,
+                    y=sum EAF,
+                    col sep=comma,
+                    ] {data/bar.csv};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bar chart of exam anxiety by age}
+    \label{fig:bar}
+\end{figure}
+
 \end{multicols}
 
 \chapter{Conclusion}
 \begin{multicols}{2}
 
 \section{Summary of Findings}
+
 \section{Recommendations}
 
 \end{multicols}
