@@ -356,7 +356,10 @@ on in life.
 
 Following with students' awareness of the problem, the pie chart in
 Figure~\ref{fig:pie} shows the percentage of students idea of the most
-problematic aspect of their life.
+problematic aspect of their life. This shows a clear bias towards
+procrastination. It is possible that the cause of such bias is the social
+constructs of the modern age. Additionally, based on what was previously
+discussed
 
 \begin{figure}[H]
     \begin{center}
@@ -396,9 +399,11 @@ problematic aspect of their life.
 
 \begin{figure}[H]
     \center
-        \begin{tikzpicture}[scale=0.8, transform shape]
+        \begin{tikzpicture}[scale=0.9, transform shape]
             \begin{axis}[
                 ybar stacked,
+                xlabel=age,
+                ylabel=total exam anxiety,
                 ]
                 \addplot+[
                     ybar,
@@ -415,7 +420,7 @@ problematic aspect of their life.
 
 \begin{figure}[H]
     \center
-    \begin{tikzpicture}[scale=0.8, transform shape]
+    \begin{tikzpicture}[scale=0.9, transform shape]
         \pie[
         text=legend,
         style={legend to the south},
@@ -438,17 +443,17 @@ problematic aspect of their life.
 \kant[1]
 
 \section{Recommendations}
-\kant[1]
+\kant[2]
 
 \end{multicols}
 
-\printbibliography[heading=bibnumbered]
+\printbibliography[heading=bibintoc, title={References}]
 
-\chapter{Appendix}
-\section{Questionnaire}
-% \appendix
-% \chapter{Questionnaire}
-% \lipsum
+% \chapter{Appendix}
+% \section{Questionnaire}
+\appendix
+\chapter{Questionnaire}
+\kant[3]
 % \chapter{Technical Notes}
 
 % This document was completely made within {\LaTeX} markup language for
