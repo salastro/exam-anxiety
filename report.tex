@@ -35,13 +35,6 @@
 
 
 \setstretch{1.15}
-% \setmainfont{Doulos SIL}[
-%     ItalicFont = {EB Garamond-Italic},
-% ]
-% \setmainfont{EB Garamond}
-% \setmainfont{Source Serif Pro}
-% \setmainfont{PT Serif}
-% \setmainfont{Charis SIL}
 \setmainfont{Times New Roman}
 \pagenumbering{roman}
 \title{Comparing the Qualitative Effects Between Procrastination and Family
@@ -71,6 +64,14 @@ Pressure on Exam Anxiety}
 \date{\today}
 
 \renewcommand{\abstractname}{Executive Summary}
+\tikzset{
+    legend to the south/.code={
+        \coordinate[
+        xshift=-1.5cm,
+        yshift=0
+        ] (legendpos) at
+    (current bounding box.south);},
+}
 
 \begin{document}
 \maketitle
@@ -353,46 +354,49 @@ anxiety. At the age of 20 students tend to be more anxious than at the age of
 college. This may indicate that other factors take affect on exam anxiety later
 on in life.
 
+Following with students' awareness of the problem, the pie chart in
+Figure~\ref{fig:pie} shows the percentage of students idea of the most
+problematic aspect of their life.
+
 \begin{figure}[H]
-    \begin{tikzpicture}
-        \begin{axis}[
-            width = \linewidth,
-            mark size=2.7pt,
-            zlabel = exam anxiety,
-            grid style=dashed,
-            ymajorgrids=true,
-            xmajorgrids=true,
-            zmajorgrids=true,
-            zlabel style={sloped},
-            clip=false,
-            ]
-            \addplot3[
-                scatter,
-                only marks,
-                ] table [
-                x=procrastination,
-                y=family,
-                z=EAF,
-                col sep=comma,
-                ]{data/data-nums.csv};
-            \node at (rel axis cs:0,0.4,1.1) [above,sloped like y axis] {family
-                pressure};
-            \node at (rel axis cs:1,0,1.7) [above,sloped like x axis]
-                {procrastination};
-            % \addplot3 [
-            %     mesh,
-            %     samples=4,
-            %     domain=0:10,
-            %     ]{0.178141*y-0.208792*x+5.63211};
-        \end{axis}
-    \end{tikzpicture}
+    \begin{center}
+        \begin{tikzpicture}[scale=0.9, transform shape]
+            \begin{axis}[
+                width = \linewidth,
+                mark size=2.7pt,
+                zlabel = exam anxiety,
+                grid style=dashed,
+                ymajorgrids=true,
+                xmajorgrids=true,
+                zmajorgrids=true,
+                zlabel style={sloped},
+                clip=false,
+                ]
+                \addplot3[
+                    scatter,
+                    only marks,
+                    ] table [
+                    x=procrastination,
+                    y=family,
+                    z=EAF,
+                    col sep=comma,
+                    ]{data/data-nums.csv};
+                \node at (rel axis cs:0,0.4,1.1) [above,sloped like y axis] {family
+                    pressure};
+                \node at (rel axis cs:1,0,1.7) [above,sloped like x axis]
+                    {procrastination};
+
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \vspace*{-5mm}
     \caption{Exam anxiety plot}
     \label{fig:3d}
 \end{figure}
 
 \begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}[]
+    \center
+        \begin{tikzpicture}[scale=0.8, transform shape]
             \begin{axis}[
                 ybar stacked,
                 ]
@@ -405,9 +409,24 @@ on in life.
                     ] {data/bar.csv};
             \end{axis}
         \end{tikzpicture}
-    \end{center}
     \caption{Bar chart of exam anxiety by age}
     \label{fig:bar}
+\end{figure}
+
+\begin{figure}[H]
+    \center
+    \begin{tikzpicture}[scale=0.8, transform shape]
+        \pie[
+        text=legend,
+        style={legend to the south},
+        ]{
+            9/Family pressure,
+            91/Procrastination
+        }
+    \end{tikzpicture}
+    \vspace*{-1mm}
+    \caption{Pie chart of students' perspective}
+    \label{fig:pie}
 \end{figure}
 
 \end{multicols}
@@ -416,8 +435,10 @@ on in life.
 \begin{multicols}{2}
 
 \section{Summary of Findings}
+\kant[1]
 
 \section{Recommendations}
+\kant[1]
 
 \end{multicols}
 
