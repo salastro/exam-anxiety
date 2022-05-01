@@ -3,6 +3,7 @@
 % \documentclass[12pt]{apa7}
 \documentclass[12pt]{report}
 
+\usepackage{pdfpages}
 \usepackage{setspace}
 \usepackage{fontspec}
 \usepackage[a4paper, margin=1in]{geometry}
@@ -476,7 +477,11 @@ them. They know what the problem is and then solve it. Each aware student had
 their own technique for dealing with their anxiety. The techniques are not the
 same yet they fall in similar categories.
 
-The main category that helped with family pressure was health care (e.g. hydration, exercise, etc) while the main one that helped with procrastination was self-control (e.g. scheduling, prioritizing, etc). Students who tried to deal with procrastination with a strategy of family pressure or vice versa had higher anxiety.
+The main category that helped with family pressure was health care (e.g.
+hydration, exercise, etc) while the main one that helped with procrastination
+was self-control (e.g. scheduling, prioritizing, etc). Students who tried to
+deal with procrastination with a strategy of family pressure or vice versa had
+higher anxiety.
 
 The solution proposed based on the data is a multi-step process that is most
 concerned with the identification of the anxiety type, then applying a number
@@ -488,7 +493,12 @@ of actions proved to be effective with this type.
 
 \appendix
 \chapter{Questionnaire}
-\kant[3]
+% \includepdf{questionnaire}
+
+\begin{center}
+    % \makebox[\textwidth][c]{\includegraphics[width=1.05\textwidth] {questionnaire.pdf}}
+    \includegraphics[width=1\linewidth]{questionnaire.pdf}
+\end{center}
 
 % \chapter{Technical Notes}
 % This document was completely made within {\LaTeX} markup language for
