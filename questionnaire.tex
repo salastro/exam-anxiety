@@ -1,7 +1,7 @@
-\documentclass[fontsize=14pt,oneside,headsepline]{scrartcl}
+\documentclass[fontsize=14pt,oneside,headsepline]{article}
 \pagenumbering{gobble}
-% \usepackage[a4paper, margin=0.9in]{geometry}
-\usepackage[margin=0in, paperheight=8in]{geometry}
+\usepackage[a4paper, margin=1in]{geometry}
+% \usepackage[margin=0in, paperheight=8in]{geometry}
 \usepackage{fontspec} \setmainfont{Times New Roman}
 % \usepackage[ngerman]{babel}
 % \usepackage[utf8]{inputenc}
@@ -10,7 +10,7 @@
 \usepackage{color}% used for background color
 \usepackage{forloop}% used for \Qrating and \Qlines
 \usepackage{ifthen}% used for \Qitem and \QItem
-\usepackage{typearea}
+% \usepackage{typearea}
 % \areaset{17cm}{26cm}
 % \setlength{\topmargin}{-1cm}
 % \usepackage{scrlayer-scrpage}
@@ -124,6 +124,41 @@
 
 \begin{document}
 
+\begin{center}
+    { \LARGE \textit{\textbf{Exam Anxiety Survey}} \par }
+    \vspace{1em}
+\end{center}
+
+\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+    \item 
+        \textbf{Who we are:} a group of grade 12 students who are
+        interested in the study of human nature.
+
+    \item 
+        \textbf{Purpose:} to scientifically measure the different factors
+        affecting exam anxiety.
+
+    \item 
+        \textbf{Confidentiality:} All information you may provide will remain
+        completely private.
+
+    \item 
+        \textbf{How long this survey will take:} around 3 minutes
+
+\end{enumerate}
+
+\section*{Demographics}
+
+\Qitem{ \Qq{Age}: \Qline{1.5cm}}
+\Qitem{ \Qq{City}: \Qline{2cm}}
+\Qitem{
+    \Qq{Gender}:
+    \Qtab{0.25cm}
+    {\QO{} Male
+        \hskip0.25cm
+    \QO{} Female}
+}
+
 \section*{Questions}
 
 \Qitem{
@@ -164,18 +199,6 @@
 \Qitem{
     \Qq{Which affected your performance the most?}
     \begin{Qlist} \item Procrastination \item Family Pressure \end{Qlist}
-}
-
-\section*{Demographics}
-
-\Qitem{ \Qq{Age}: \Qline{1.5cm}}
-\Qitem{ \Qq{City}: \Qline{2cm}}
-\Qitem{
-    \Qq{Gender}:
-    \Qtab{0.25cm}
-    {\QO{} Male
-        \hskip0.25cm
-    \QO{} Female}
 }
 
 \end{document}

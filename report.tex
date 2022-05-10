@@ -29,18 +29,22 @@
 % \usepackage{datatool}
 % \DTLloaddb{data}{data/data-nums.csv}
 \usepackage{pgf-pie}  
+\usepackage{wasysym}% provides \ocircle and \Box
+\usepackage{enumitem}% easy control of topsep and leftmargin for lists
+\usepackage{color}% used for background color
+\usepackage{forloop}% used for \Qrating and \Qlines
+\usepackage{ifthen}% used for \Qitem and \QItem
 
 \pgfplotsset{compat=newest}
 % \usepgfplotslibrary{external}
 % \tikzexternalize
 
-
 \setstretch{1.15}
 \setmainfont{Times New Roman}
 \pagenumbering{roman}
-\title{Comparing the Qualitative Effects Between Procrastination and Family
-Pressure on Exam Anxiety}
-\author{
+\renewcommand{\title}{Comparing the Qualitative Effects Between Procrastination
+and Family Pressure on Exam Anxiety}
+\renewcommand{\author}{
     Marawan MogebElrahman Foud AbdElbaset \\
     \texttt{\href{mailto:marawan.1519030@stemluxor.moe.edu.eg}{marawan.1519030@stemluxor.moe.edu.eg}} \\
     SalahDin Ahmed Salh Rezk \\
@@ -48,21 +52,14 @@ Pressure on Exam Anxiety}
     Younis Tarek Hanafi Metwaly \\
     \texttt{\href{mailto:younis.1519035@stemluxor.moe.edu.eg}{younis.1519035@stemluxor.moe.edu.eg}} \\
     \\\\
-    Luxor STEM School
-    \includegraphics[height=.85em]{images/luxor.jpg}
-    and
-    Qena STEM School
-    \includegraphics[height=.85em]{images/qena.png}
-    \\
-    under the Egyptian Ministry of Education
-    \includegraphics[height=.85em]{images/ministry.png}
+    Luxor STEM School \\
+    The Egyptian Ministry of Education
     \\\\
     English Class Grade 12
     \\\\
-    Mr. Khalil
+    Mr. Khalil Ahmed
     % \href{mailto:khalil@stemqena.moe.edu.eg}{{\fontspec{Symbola}\char"1F4E7}}
 }
-\date{\today}
 
 \renewcommand{\abstractname}{Executive Summary}
 \tikzset{
@@ -74,28 +71,92 @@ Pressure on Exam Anxiety}
     (current bounding box.south);},
 }
 
+\newcommand{\Qq}[1]{\textbf{#1}}
+\newcommand{\QO}{$\Box$}% or: $\ocircle$
+\newcounter{qr}
+\newcommand{\Qrating}[1]{\QO\forloop{qr}{1}{\value{qr} < #1}{---\QO}}
+\newcommand{\Qline}[1]{\noindent\rule{#1}{0.6pt}}
+\newcounter{ql}
+\newcommand{\Qlines}[1]{\forloop{ql}{0}{\value{ql}<#1}{\vskip0em\Qline{\linewidth}}}
+\newenvironment{Qlist}{%
+    \renewcommand{\labelitemi}{\QO}
+    \begin{itemize}[leftmargin=1.5em,topsep=-.5em]
+    }{%
+\end{itemize}
+}
+\newlength{\qt}
+\newcommand{\Qtab}[2]{
+    \setlength{\qt}{\linewidth}
+    \addtolength{\qt}{-#1}
+    \hfill\parbox[t]{\qt}{\raggedright #2}
+}
+\newcounter{itemnummer}
+\newcommand{\Qitem}[2][]{% #1 optional, #2 notwendig
+    \ifthenelse{\equal{#1}{}}{\stepcounter{itemnummer}}{}
+    \ifthenelse{\equal{#1}{a}}{\stepcounter{itemnummer}}{}
+    \begin{enumerate}[topsep=2pt,leftmargin=2.8em]
+        \item[\textbf{\arabic{itemnummer}#1.}] #2
+    \end{enumerate}
+}
+\definecolor{bgodd}{rgb}{0.8,0.8,0.8}
+\definecolor{bgeven}{rgb}{0.9,0.9,0.9}
+\newcounter{itemoddeven}
+\newlength{\gb}
+\newcommand{\QItem}[2][]{% #1 optional, #2 notwendig
+    \setlength{\gb}{\linewidth}
+    \addtolength{\gb}{-5.25pt}
+    \ifthenelse{\equal{\value{itemoddeven}}{0}}{%
+        \noindent\colorbox{bgeven}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+        \stepcounter{itemoddeven}%
+    }{%
+        \noindent\colorbox{bgodd}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+        \setcounter{itemoddeven}{0}%
+    }
+}
+
 \begin{document}
-\maketitle
+
+\begin{titlepage}
+    \includegraphics[width = 25mm]{images/luxor.jpg}
+    \hfill
+    \includegraphics[width = 25mm]{images/ministry.png}
+    \null\vfil
+    \vskip 60pt
+    \begin{center}
+        {\LARGE \title \par}%
+        \vskip 3em%
+        {\large
+            \lineskip .75em%
+            \begin{tabular}[t]{c}%
+                \author
+        \end{tabular}\par}%
+        \vskip 1.5em%
+        {\large \today \par}%       % Set date in \large size.
+    \end{center}\par 
+    \null\vfil
+\end{titlepage}
+
+% \listoftables
 \tableofcontents
 \listoffigures
 % \listoftables
 
 \begin{abstract}
-    
-    Exam anxiety is a huge factor in the daily life of students. It may affect
-    their possible performance in exams resulting in an undesirable future. The
-    most common causes of exam anxiety are the lack of preparation and family
-    pressure. This report presents the qualitative effects of the two in order
-    to form more sophisticated plans for dealing with the educational issues
-    that arise. The method by which these factors are compared is based on a
-    3-dimensional 10-point scale which input is an 8-question survey. The test
-    was done on a sample of 44 Egyptian students ranging from 15 to 22 years
-    old. The model concluded that family pressure has more effect than
+
+    \noindent Exam anxiety is a huge factor in the daily life of students. It
+    may affect their possible performance in exams resulting in an undesirable
+    future. The most common causes of exam anxiety are the lack of preparation
+    and family pressure. This report presents the qualitative effects of the two
+    in order to form more sophisticated plans for dealing with the educational
+    issues that arise. The method by which these factors are compared is based
+    on a 3-dimensional 10-point scale which input is an 8-question survey. The
+    test was done on a sample of 44 Egyptian students ranging from 15 to 22
+    years old. The model concluded that family pressure has more effect than
     procrastination on exam anxiety by 40\%. Additionally, it was possible to
     deduce that a problem-specific—based strategy is the most suitable to deal
     with exam anxiety. However, the results are not conclusive since the study
     did not take into account external factors that might affect the system.    
-    
+
     \addcontentsline{toc}{chapter}{Executive Summary}
     \thispagestyle{plain}
     \pagenumbering{arabic}
@@ -244,7 +305,7 @@ Equation~\ref{eq:eaf-f} and Equation~\ref{eq:eaf-p} respectively with
 determination coefficients of $R^2 = 0.04$ and $R^2 = 0.06$.
 
 \begin{equation}
-    EAF = \textnormal{stress} -
+    EA = \textnormal{stress} -
     \frac{\textnormal{satisfaction}}{\textnormal{recovery}}
     \label{eq:exam-anxiety}
 \end{equation}
@@ -499,10 +560,84 @@ of actions proved to be effective with this type.
 \chapter{Questionnaire}
 % \includepdf{questionnaire}
 
-\begin{center}
-    % \makebox[\textwidth][c]{\includegraphics[width=1.05\textwidth] {questionnaire.pdf}}
-    \includegraphics[width=1\linewidth]{questionnaire.pdf}
-\end{center}
+% \begin{center}
+%     % \makebox[\textwidth][c]{\includegraphics[width=1.05\textwidth] {questionnaire.pdf}}
+%     \includegraphics[width=1\linewidth]{questionnaire.pdf}
+% \end{center}
+
+% \section{Introuction}
+
+\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+    \item 
+        \textbf{Who we are:} a group of grade 12 students who are
+        interested in the study of human nature.
+        
+    \item 
+        \textbf{Purpose:} to scientifically measure the different factors
+        affecting exam anxiety.
+        
+    \item 
+        \textbf{Confidentiality:} All information you may provide will remain
+        completely private.
+        
+    \item 
+        \textbf{How long this survey will take:} around 3 minutes
+
+\end{enumerate}
+
+\section{Demographics}
+
+\Qitem{ \Qq{Age}: \Qline{1.5cm}}
+\Qitem{ \Qq{City}: \Qline{2cm}}
+\Qitem{
+    \Qq{Gender}:
+    \Qtab{0.25cm}
+    {\QO{} Male
+        \hskip0.25cm
+    \QO{} Female}
+}
+
+\section{Questions}
+
+\Qitem{
+    \Qq{How much did procrastination affect your academic performance?}
+    \center {no impact \Qrating{10} screwed it}
+}
+
+\Qitem{
+    \Qq{How satisfied were you with your last year's academic performance?}
+    \center {disaster \Qrating{10} fantastic}
+}
+
+\Qitem{
+    \Qq{How stressful did you feel about last year's exams?}
+    \center {not stressful \Qrating{10} very stressful}
+}
+
+\Qitem{
+    \Qq{How harsh did your family go on you to study last year?}
+    \center {not harsh \Qrating{10} very harsh}
+}
+
+\Qitem{
+    \Qq{How hard it takes you to recover after bad grades?}
+    \center \hspace*{-0.4cm} {easy \Qrating{10} hard}
+}
+
+\Qitem{
+    \Qq{What are the factors that lead to exam anxiety from your perspective?}
+    \Qlines{2}
+}
+
+\Qitem{
+    \Qq{How do you get ready mentally for your exams?}
+    \Qlines{2}
+}
+
+\Qitem{
+    \Qq{Which affected your performance the most?}
+    \begin{Qlist} \item Procrastination \item Family Pressure \end{Qlist}
+}
 
 % \chapter{Technical Notes}
 % This document was completely made within {\LaTeX} markup language for
